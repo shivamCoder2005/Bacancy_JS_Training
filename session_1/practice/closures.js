@@ -28,6 +28,7 @@
 
 function a() {
   var x = 5;
+  var y = 10;
   function b() {
     function c() {
       console.log(x);
@@ -38,4 +39,6 @@ function a() {
 }
 var func = a();
 
+func();
+//console.log(x,y); // x and y both are collected by garbage collector can't be accessed without calling func method
 func();
