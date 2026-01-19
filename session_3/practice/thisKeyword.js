@@ -94,7 +94,6 @@
 
 //Arrow still looks outside the block.
 
-
 // ** this case 5 **
 
 // var doc = "this keyword doc";
@@ -104,25 +103,26 @@
 //     return this.doc;
 //   },
 //   printNameArrow: () => {
-    //     return this.doc;
+//     return this.doc;
 //   },
 //   IIFE: (function () {
 //     // console.log(this)
 //     return this.doc;
 //   })(),
 //   IIFEArrow: (() => {
-    //     // console.log(this)
-    //     return this.doc;
-    //   })(),
-    // };
-    // console.log(obj.printName()); // JS
-    // console.log(obj.printNameArrow()); // this keyword doc
+//     // console.log(this)
+//     return this.doc;
+//   })(),
+// };
+
+// console.log(obj.printName()); // JS
+// console.log(obj.printNameArrow()); // this keyword doc
 // console.log(obj.IIFE); // this keyword doc
 // console.log(obj.IIFEArrow); // this keyword doc
 
 // IIFE functions :- even though it sits inside the object, it executes immediately as a
 // standalone function call during the object's creation, not as a method call.
-// IIFEArrow also executes immediately, and like all arrow functions, 
+// IIFEArrow also executes immediately, and like all arrow functions,
 // it captures this from the enclosing global scope.
 
 //---------------------------------------------------------------------------------------------------
