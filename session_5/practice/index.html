@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <style>
+        div {
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+
+        h2 {
+            color: black;
+        }
+
+        #grandparent {
+            background-color: green;
+            width: 300px;
+            height: 300px;
+        }
+
+        #parent {
+            background-color: blue;
+            width: 200px;
+            height: 200px;
+        }
+
+        #child {
+            background-color: red;
+            width: 100px;
+            height: 100px;
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        <h2>Welcome To GFG</h2>
+        <div id="grandparent">GrandParent
+            <div id="parent">Parent
+                <div id="child">Child</div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // bubbling is default
+        // to stop it use e.stopPropagation()
+        // caputuring needs to be turn on explicitly
+
+        const grandParent = document.getElementById("grandparent");
+        const parent = document.getElementById("parent");
+        const child = document.getElementById("child");
+
+        grandParent.addEventListener("click", (e) => {
+            e.stopPropagation()
+            console.log("GrandParent");
+            console.log(e.target)
+        });
+
+
+        parent.addEventListener("click", (e) => {
+            console.log("parent");
+        });
+
+        child.addEventListener("click", (e) => {
+            console.log("child");
+        });
+
+        // use case:- don't need to add event listner on every child
+        //              just add on parent and using bubbling if any child
+        //              is clicked we can get that element using e.target
+
+    </script>
+</body>
+
+</html>

@@ -68,9 +68,9 @@ const inventory = [
 
 output = inventory
   .filter((item) => item.stock > 0)
-  .map((item) => {
-    return { ...item, value: item.price * item.stock };
-  })
-  .reduce((acc, curr) => (acc += curr.value),0);
+  .map((item) => item.price * item.stock);
+// .reduce((acc, curr) => (acc += curr.value),0);
 
 console.log(output);
+
+[5000, 500];

@@ -23,11 +23,11 @@ console.log(a); // 5
 // example 2 
 // learning:- var is always be hoisted at the top of current execution context given code same as
 
-              // var x;
-              // if(true){
-              //     x = 5;
-              //     console.log(x);
-              // }
+// var x;
+// if(true){
+//     x = 5;
+//     console.log(x);
+// }
 
 // if(true){
 //     var x = 5;

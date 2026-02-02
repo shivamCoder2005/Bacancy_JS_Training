@@ -95,3 +95,8 @@ const ecar = new ElectricCar("tesla", "S5");
 
 // ElectricCar.__proto__ = Car.prototype
 // Car.__proto__ = Function.prototype
+
+
+/*
+
+*/
