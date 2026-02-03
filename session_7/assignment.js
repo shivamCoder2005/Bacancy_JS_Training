@@ -1,4 +1,4 @@
-// // Q1
+// Q1
 
 const laptop = {
     brand: "Dell",
@@ -14,6 +14,8 @@ console.log(myBrand);
 // Reason :- laptop is caller object and getBrand is normal function ( not arrow ) 
 //          so this refers to laptop object 
 
+// **************************************************************************************
+
 // // Q2. Basic Promise Flow
 
 console.log(1);
@@ -28,8 +30,10 @@ console.log(3);
 //          promise goes into microtask queue
 //          after top level code promise from microtask executes
 
+// **************************************************************************************
 
-// // Q3. The Broken Chain
+
+// Q3. The Broken Chain
 
 Promise.reject("Error Occurred")
     .then(() => console.log("Success"))
@@ -40,7 +44,9 @@ Promise.reject("Error Occurred")
 // reason :- when promise reject it is caught into catch block 
 //           data passed in reject as param recives as err in call back
 
-// // Q4. Global vs. Local Scope
+// **************************************************************************************
+
+// Q4. Global vs. Local Scope
 
 var status = "Offline";
 
@@ -60,8 +66,9 @@ console.log(server.getStatus());
 //           inside function we have this.status (status as a property not variable)
 //           that's why we got Online as a answer
 
+// **************************************************************************************
 
-// // Q5. Math in Promises
+// Q5. Math in Promises
 
 Promise.resolve(10)
     .then((num) => num * 2)
@@ -73,8 +80,9 @@ Promise.resolve(10)
 //           .then mulitply it by 2 and return (implicit due to arrow function)
 //           next .then recevies 20 and console it
 
+// **************************************************************************************
 
-// // Q6. The "Lost" Context
+// Q6. The "Lost" Context
 
 const user = {
     name: "Alex",
@@ -92,7 +100,9 @@ print();
 //          now print is called by window object (in browser)
 //          this refers to window object and window don't have name property so undefined
 
-// // Q7. Event Loop Basic Race
+// **************************************************************************************
+
+// Q7. Event Loop Basic Race
 
 console.log("Start");
 
@@ -110,6 +120,7 @@ console.log("End");
 //          so first promise get chance to executes -> Promise
 //          then time -> Promise
 
+// **************************************************************************************
 
 // // Q8. Arrow Function Pitfall
 
@@ -129,6 +140,8 @@ group.getTitle();
 //          default refers to Window Object
 //          window don't have title so undefined
 
+// **************************************************************************************
+
 // // Q9. Chaining Returns
 
 Promise.resolve(5)
@@ -144,6 +157,8 @@ Promise.resolve(5)
 //          .then return val + 5 = 10 
 //          receives by next .then as val and console log -> 10
 
+// **************************************************************************************
+
 // // Q10. Catch and Continue
 
 Promise.reject("Fail")
@@ -158,6 +173,8 @@ Promise.reject("Fail")
 // reason :- reject data catch as err in .catch 
 //           data return from .catch caught by .then as res
 //           now res got console log 
+
+// **************************************************************************************
 
 // // Q11. The Nested Timeout
 
@@ -184,6 +201,8 @@ console.log('E');
 //          now second promise resolved -> D
 //          timer got resolved -> B
 
+// **************************************************************************************
+
 // Q 12
 const agent = {
     id: 101
@@ -196,9 +215,18 @@ function showId() {
 showId.call(agent);
 showId.apply(null);
 
+// Reason:- call and apply are used to bind any method to Object
+//         here showId is bind with object so this refers to agent object
+//         and this.id = agent.id  = 101
+//          same way apply bind showId function with null Object
+//          null don't have id so undefined
+
+
 // Output: 101 undefined
 
-// // Q13. Promise.all Failure
+// **************************************************************************************
+
+// Q13. Promise.all Failure
 
 Promise.all([
     Promise.resolve("Success 1"),
@@ -214,6 +242,7 @@ Promise.all([
 // //          here second proimse is rejected so all got rejected 
 // //          error caught in catch
 
+// **************************************************************************************
 
 // // Q14. The "Callback" Context Trap
 
@@ -235,6 +264,7 @@ player.updateScore();
 //          now caller object is window and window don't have score so undefined
 //          to solve it use arrow function in setTimeout as callback function
 
+// **************************************************************************************
 
 
 // // Q15. Throwing Inside a Chain
@@ -253,6 +283,7 @@ Promise.resolve(1)
 
 // reason :-  resolve data goes into .then ->  it throws error goes into .catch ->
 //            it return data -> goes into next .then and console it 
+// **************************************************************************************
 
 
 // Q16. Async Function Order
@@ -275,6 +306,7 @@ console.log("D");
 //           logs D
 //           promise resolved now furthr code starts to executes logs B
 
+// **************************************************************************************
 
 // Q17. The "Finally" Gotcha
 
@@ -290,6 +322,8 @@ Promise.resolve("Done")
 // Reason :-  finally() does NOT modify the resolved value
 //            Whatever you return from finally is ignored
 //            The original promise value continues unchanged
+
+// **************************************************************************************
 
 
 // Q18. Variable Hoisting & Promises
@@ -309,6 +343,7 @@ a = 10;
 //          then promise goes to microtask queue
 //          when it resolve a is already changed to 10
 
+// **************************************************************************************
 
 // Q19. Microtask vs Macrotask Interleaving
 
@@ -329,6 +364,7 @@ console.log("End");
 //          both promise goes into microque and timer macroqueue
 //          first promise resolved -> P1 logs
 
+// **************************************************************************************
 
 // Q20. Object Method Assigned to Class
 
@@ -349,6 +385,6 @@ p();
 // output :- Sarah
 
 // Reason:-
-// When you write print = () => { ... } inside a class, it is not actually added to the class prototype. Instead, it is defined as an instance property during construction.
-
-// Because it’s an arrow function, this is permanently bound to the instance (m) the moment new Manager("Sarah") is called.
+// Arrow function don't have there own this they inherit it from its parent which is Manager
+// becuase class are internally function
+// so this refers to class it self so this.name gives Sarah
