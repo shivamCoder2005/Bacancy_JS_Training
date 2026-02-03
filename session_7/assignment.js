@@ -184,6 +184,20 @@ console.log('E');
 //          now second promise resolved -> D
 //          timer got resolved -> B
 
+// Q 12
+const agent = {
+    id: 101
+};
+
+function showId() {
+    console.log(this.id);
+}
+
+showId.call(agent);
+showId.apply(null);
+
+// Output: 101 undefined
+
 // // Q13. Promise.all Failure
 
 Promise.all([
