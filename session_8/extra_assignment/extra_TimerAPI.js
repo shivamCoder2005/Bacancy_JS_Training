@@ -69,92 +69,9 @@ function stopPrintNumAfter(n) {
 
 // stopPrintNumAfter(5);
 
-// // problem 4: setTimeout using setInterval
 
-function mysetTimeout(fn, delay) {
-  const id = setInterval(() => {
-    fn();
-    clearInterval(id);
-  }, delay);
-  return id;
-}
 
-function myclearTimeout(id) {
-  clearInterval(id);
-}
 
-const fn = () => {
-  console.log("hello");
-};
 
-// // mysetTimeout(fn, 1000);
-
-// problem 5: setInterval using setTimeout
-
-function mysetInterval(fn, delay) {
-  const myId = {
-    id: null,
-  };
-  function wrapper() {
-    myId.id = setTimeout(() => {
-      fn();
-      myId.id = wrapper(fn, delay);
-    }, delay);
-    return myId.id;
-  }
-  wrapper();
-  return myId;
-}
-
-function myclearInterval(myId) {
-  clearTimeout(myId.id);
-}
-
-const id = mysetInterval(() => {
-  console.log("hiiii");
-}, 100);
-
-setTimeout(() => {
-  myclearInterval(id);
-}, 1000);
-
-// // problem 6: Implement poll(fn, interval, timeout)
-// // Poll an API until:
-// // It returns success
-// // OR timeout happens
-// // handle confilict as well
-// // api call must be one after another
-
-async function makeAPI() {
-  // simulating api delay using promise with settimeout
-
-  return new Promise((resolve, _) => {
-    setTimeout(() => {
-      resolve("resolved");
-    }, 100);
-  });
-}
-
-function polling(interval, timeout, endPolling) {
-  const id = setInterval(async () => {
-    try {
-      const result = await Promise.race([
-        makeAPI(),
-        new Promise((_, reject) =>
-          setTimeout(() => reject("time expires"), timeout),
-        ),
-      ]);
-      console.log(result);
-    } catch (err) {
-      console.log(err);
-    }
-  }, interval);
-
-  setTimeout(() => {
-    clearInterval(id);
-  }, endPolling);
-}
-
-// polling(2000, 1000,10000);
 
 
