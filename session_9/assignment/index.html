@@ -1,0 +1,79 @@
+<!-- 
+1. Create a simple HTML page with:
+2. One input field (name)
+3. Two buttons: Save and Load
+4. On Save:
+5. Store the value in
+6. Store the same value in
+7. On Load:
+8. Retrieve and display values from both storages 
+-->
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Storage Practice</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+        }
+
+        input {
+            padding: 5px;
+            margin-right: 10px;
+        }
+
+        button {
+            padding: 5px 10px;
+            margin-right: 5px;
+        }
+
+        p {
+            margin-top: 10px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!--  on page relaod there is no effect on local storage or session storage
+   but when tab is closed or chagned data in session storage is gone -->
+
+    <h2>Browser Storage Practice</h2>
+
+    <input type="text" id="name" placeholder="Enter your name" />
+
+    <button onclick="saveData()">Save</button>
+    <button onclick="loadData()">Load</button>
+
+    <p><strong>LocalStorage:</strong> <span id="localValue">---</span></p>
+    <p><strong>SessionStorage:</strong> <span id="sessionValue">---</span></p>
+
+    <script>
+        function saveData() {
+            const name = document.getElementById("name").value;
+
+            localStorage.setItem("name", name);
+            sessionStorage.setItem("name", name);
+
+        }
+
+        function loadData() {
+            const localName = localStorage.getItem("name");
+            const sessionName = sessionStorage.getItem("name");
+
+            document.getElementById("localValue").textContent =
+                localName ? localName : "No data";
+
+            document.getElementById("sessionValue").textContent =
+                sessionName ? sessionName : "No data";
+        }
+    </script>
+
+</body>
+
+</html>
