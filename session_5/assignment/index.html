@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Assignments</title>
+    <link rel="stylesheet" href="./style.css">
+</head>
+
+<body>
+    <h1>Assignment Related To Dom & Async</h1>
+
+    <!-- task 1
+    1) Create an HTML file with a paragraph <p id="secret-message">Initial Text</p> and a button.
+    On button click, select the paragraph using getElementById and change its text to "You found the secret message!". -->
+
+    <div>
+        <p id="secret-message">Hi</p>
+        <button id="secret-btn">Click Me</button>
+    </div>
+
+    <!-- 2) Create three <div> elements with the class box.
+        Select all boxes using querySelectorAll and change the background color of each box to lightblue using forEach. -->
+
+    <div class="box"></div>
+    <div class="box"></div>
+    <div class="box"></div>
+
+
+    <!-- 3) Create a button with text "Clicks: 0".
+    Initialize a variable count = 0.
+    On each button click, increment count and update the button text accordingly. -->
+
+    <div>
+        <h2>Counter</h2>
+        <p>Count : <span id="mycount">0</span></p>
+        <button id="inc-count">Click me</button>
+    </div>
+
+    <div>
+        <div id="toggleBox" class="my-box">
+            Click Me
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
