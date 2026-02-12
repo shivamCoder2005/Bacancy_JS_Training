@@ -1,27 +1,46 @@
-// Write a function with required and optional parameters
-// Define return types explicitly
-// Call it with and without the optional argument
+// Create a service class exposing only required public methods
+// Keep internal data private
+// Explain which members should be accessible and why
+// Create a class with public, private, and protected members
+// Try accessing them outside the class
+// Which members should be exposed and why?
 
-function add(a: number, b: number, c?: number): number {
-    return a + b;
-}
+class UserService {
+    public serviceName: string = "User Service";
+    private users: string[] = [];
+    protected maxUsers: number = 100;
 
-// Create a small utility function that would exist in a real project
-// Write a function with one required and one optional parameter
+    constructor() { }
 
-function addPost(title: string, authroName: string, authorAge?: number) {
-    const newPost = {
-        title: title,
-        authroName: authroName,
-        authorAge: authorAge
+    public addUser(name: string) {
+        if (this.users.length >= this.maxUsers) {
+            throw new Error("User limit reached");
+        }
+        this.users.push(name);
     }
-    
-    // db logic to add this post to db
+
+    public getUsers() {
+        return [...this.users];
+    }
+
+    private validateName(name: string): boolean {
+        return name.length > 2;
+    }
 }
 
-addPost("event loop internals", "shivam")
-addPost("event loop internals", "shivam", 20)
+const myservice = new UserService()
 
-// both works
-// but if we need to perform any operation with authorAge which is optional param
-// we need to check wheather it is undefined or not
+console.log(myservice.serviceName)
+
+// not accessible
+// console.log(myservice.users)
+// console.log(myservice.maxUsers)
+
+// same for methods
+
+myservice.addUser("shivam")
+myservice.getUsers()
+
+// private method can't be invoked outside of the class
+
+// myservice.validatename("shivam")

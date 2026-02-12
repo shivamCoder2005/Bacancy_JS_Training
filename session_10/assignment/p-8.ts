@@ -1,51 +1,27 @@
+// Write a function with required and optional parameters
+// Define return types explicitly
+// Call it with and without the optional argument
 
-// Create an enum for payment states (INITIATED, SUCCESS, FAILED)
-enum PaymentStatus {
-    INITIATED = "INITIATED",
-    SUCCESS = "SUCCESS",
-    FAILED = "FAILED"
+function add(a: number, b: number, c?: number): number {
+    return a + b;
 }
 
-// Write a function that accepts only this enum
-// function checkStatus(status: PaymentStatus) {
-//     if (status === PaymentStatus.INITIATED) {
-//         console.log("payment intiated")
-//     }
-//     else if (status === PaymentStatus.SUCCESS) {
-//         console.log("payment success")
-//     }
-//     else {
-//         console.log("payment failed")
-//     }
-// }
+// Create a small utility function that would exist in a real project
+// Write a function with one required and one optional parameter
 
-// checkStatus(PaymentStatus.SUCCESS)
-
-// wrirting function with magic string
-
-function checkStatus(status: "INITIATED" | "SUCCESS" | "FAILED") {
-    if (status === "INITIATED") {
-        console.log("payment intiated")
+function addPost(title: string, authroName: string, authorAge?: number) {
+    const newPost = {
+        title: title,
+        authroName: authroName,
+        authorAge: authorAge
     }
-    else if (status === "SUCCESS") {
-        console.log("payment success")
-    }
-    else {
-        console.log("payment failed")
-    }
+    
+    // db logic to add this post to db
 }
 
-checkStatus("INITIATED")
+addPost("event loop internals", "shivam")
+addPost("event loop internals", "shivam", 20)
 
-
-// Why enums are better than magic strings?
-
-// enum gives run time safety as they are converted into objects which exists at run time
-// magic strings are basically union of literal types
-// so they are gone at run time after compilation
-// enum are reusable 
-// we can map values with it also
-
-
-
-
+// both works
+// but if we need to perform any operation with authorAge which is optional param
+// we need to check wheather it is undefined or not
