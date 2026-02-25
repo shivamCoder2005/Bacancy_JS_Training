@@ -46,3 +46,6 @@ const nameFormatter: Formatter = (name: string) => {
 }
 
 nameFormatter.greetMsg = "hii"
+
+
+
